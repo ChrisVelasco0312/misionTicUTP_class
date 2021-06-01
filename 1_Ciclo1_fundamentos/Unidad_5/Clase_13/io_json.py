@@ -1,3 +1,5 @@
+import pandas as pd
+
 devs = [
     {'cc': 1540, 'nombre': 'Miguel', 'Salario': 2600000, 'years': 5},
     {'cc': 1556, 'nombre': 'Cristian', 'Salario': 2500000, 'years': 2},
@@ -10,3 +12,14 @@ devs = [
     {'cc': 5586, 'nombre': 'Jinneth', 'Salario': 2800000, 'years': 2},
     {'cc': 3556, 'nombre': 'Alejandro', 'Salario': 2700000, 'years': 1},
 ]
+
+devs2 = pd.DataFrame(devs, index=[dev['nombre'] for dev in devs])
+
+# Buscar 2 elementos
+print(devs2.loc[['Milton', 'Sendy']])
+
+# Buscar por rango
+print(devs2.loc['Sendy': 'Milton'])
+
+# Buscar por rango mostrando elementos específicos
+print(devs2.loc['Sendy': 'Milton', ['cc']])
