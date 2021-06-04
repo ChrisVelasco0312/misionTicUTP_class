@@ -15,4 +15,15 @@ devs = [
 
 devs2 = pd.DataFrame(devs)
 
-devs2.to_csv('devs.csv')
+# Convertir dataframe a csv
+devs2.to_csv('devs.csv', index=False)
+# Convertir dataframe a json
+devs2.to_json('devs.json')
+
+# Leer archivo csv
+devs_read_csv = pd.read_csv('devs.csv')
+print(devs_read_csv)
+
+# Leer archivo json
+devs_read_json = pd.read_json('devs.json')
+print(devs_read_json)
