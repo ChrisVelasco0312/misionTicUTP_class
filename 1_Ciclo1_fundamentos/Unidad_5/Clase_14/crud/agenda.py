@@ -13,7 +13,7 @@ def read_agenda():
 
 def create_contact():
     """
-        Requiere, nombre, 
+        Requiere, nombre,
         numero de teléfono
         y un correo
     """
@@ -31,6 +31,34 @@ def create_contact():
     fr.close()
 
 
+def search_by_name():
+    # se pide el nombre y se convierte en minúsculas
+    search = input('Digite el nombre: ').lower()
+
+    # leemos los datos y pasamos la columna name a los índices
+    agenda_data = pd.read_csv('agenda.csv')
+    agenda_name_indexed = agenda_data.set_index('name')
+
+    # con un map convertimos todos los nombres de la lista en minúsculas
+    names = list(map(lambda name: name.lower(), list(agenda_data['name'])))
+
+    # con el metodo find guardamos las ocurrencias en una variable
+    ocurrences = list(filter(lambda name: name.find(
+        search) >= 0, names))
+
+    # imprimimos convirtiendo cada inicial de la lista en una capital o mayuscula
+    # para que pueda encontrarlo en el dataframe a través de loc
+    if ocurrences != []:
+        print(
+            agenda_name_indexed.loc[
+                list(map(lambda name: name.capitalize(), ocurrences))
+            ]
+        )
+    else:
+        print('Nombre no encontrado intente con otro: ')
+        search_by_name()
+
+
 def show_menu():
     print(
         """
@@ -39,6 +67,7 @@ def show_menu():
 
             1- Crear Contacto
             2- Leer agenda
+            3- Buscar por nombre
             9- Salir
 
         """
@@ -49,6 +78,8 @@ def show_menu():
         create_contact()
     elif option == '2':
         read_agenda()
+    elif option == '3':
+        search_by_name()
     elif option == '9':
         exit()
 
@@ -60,7 +91,7 @@ def run():
 
 
 if __name__ == '__main__':
-    # # crear un dataframe
+    # crear un dataframe
     # df = pd.DataFrame(columns=['name', 'cel', 'email'])
     # # crear un archivo .csv desde el dataframe
     # df.to_csv('agenda.csv', index=False)
