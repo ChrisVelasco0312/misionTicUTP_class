@@ -15,5 +15,4 @@ public class App {
     public static String name(String firstName, String lastName) {
         return "Your name is " + firstName + " " + lastName;
     }
-
 }
