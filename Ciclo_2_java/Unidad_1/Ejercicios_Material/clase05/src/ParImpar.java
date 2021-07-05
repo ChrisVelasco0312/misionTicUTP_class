@@ -7,13 +7,18 @@ public class ParImpar {
         int number = sc.nextInt();
 
         System.out.println(checkOddEven(number));
+        sc.close();
     }
 
     public static String checkOddEven(int number) {
-        if (number % 2 == 0) {
-            return number + " is Even";
-        } else {
-            return number + " is Odd";
-        }
+        // Con condicionales
+        // if (number % 2 == 0) {
+        // return number + " is Even";
+        // } else {
+        // return number + " is Odd";
+        // }
+
+        // Con operador ternario
+        return number + (number % 2 == 0 ? " is Even" : " is Odd");
     }
 }

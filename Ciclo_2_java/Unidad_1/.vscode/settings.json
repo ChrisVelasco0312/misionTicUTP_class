@@ -1,6 +1,10 @@
 {
     "java.project.sourcePaths": [
+        "Ejercicios_Material/clase05/src",
         "Ejercicio_Clase_3/src",
-        "Ejercicios_Material/clase01/src"
+        "Clase_1/Ejercicio_Clase_3/src",
+        "Clase_1/Ejercicio_2/src",
+        "Clase_1/Ejercicio_1/src",
+        "Clase_2/Ejercicio_01/src"
     ]
 }
