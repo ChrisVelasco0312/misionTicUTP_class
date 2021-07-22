@@ -6,17 +6,20 @@ public class Wallet {
 
     // Create the constant for the wallet limit
     public static final int WALLET_LIMIT = 500000;
+    public static final int TRANSACTION_LIMIT = 200000;
     /**
      * wallet balance
      */
 
     private int balance;
     private boolean hasLimit;
+    private int goal;
 
     public Wallet(boolean limit) {
         super();
         // initialize balance attr
         balance = 0;
+        goal = 0;
         hasLimit = limit;
     }
 
@@ -29,6 +32,9 @@ public class Wallet {
             return "cannot exceed the limit";
         }
         balance += value;
+        if (verifyGoal()) {
+            System.out.println("You have surpassed the goal!");
+        }
         return "Operation succeed! your new balance is " + balance;
     }
 
@@ -48,13 +54,55 @@ public class Wallet {
     }
 
     // The lesson solution
-    public String getMoney(int value){
-        if(value > balance){
+    public String getMoney(int value) {
+        if (value > balance) {
             int tempBalance = balance;
-            
+
             return "Sorry, you have insufficient funds";
         }
         balance -= value;
-        return "Succesful balance withdrawal "
+        return "Succesful balance withdrawal ";
     }
+
+    // set and verify goal --- My solution
+
+    // public String setGoal(int value) {
+    // goal = value;
+    // return "Congrats!, your new goal was set to: " + goal;
+    // }
+
+    // public String verifyGoal() {
+    // if (goal == 0) {
+    // return "Sorry the goal has not been set yet.";
+    // } else if (goal > 0 && balance == goal) {
+    // return "Congratulations, you have reached the goal!";
+    // } else if (balance > goal) {
+    // return "You just have surpassed the goal! by: " + (balance - goal);
+    // }
+    // return "You're still " + (goal - balance) + " short to the goal of: " + goal;
+    // }
+
+    // Lesson Solution
+
+    public String setGoal(int value) {
+        if (value > WALLET_LIMIT && hasLimit) {
+            return "You can't set a goal higher than the limit";
+        }
+        if (value <= 0) {
+            return "The value is not valid";
+        }
+        if (value <= balance) {
+            return "You have already surpassed this goal!";
+        }
+        goal = value;
+        return "New goal added";
+    }
+
+    public boolean verifyGoal() {
+        if (balance >= goal && goal > 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
