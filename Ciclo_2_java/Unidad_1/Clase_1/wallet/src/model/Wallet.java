@@ -98,6 +98,10 @@ public class Wallet {
         return "New goal added";
     }
 
+    public int getGoal() {
+        return goal;
+    }
+
     public boolean verifyGoal() {
         if (balance >= goal && goal > 0) {
             return true;

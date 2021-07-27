@@ -5,7 +5,7 @@ import model.Owner;
 
 public class UserView {
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         Owner owner1 = new Owner("Rodrain");
         System.out.println(owner1.getName());
         Owner owner2 = new Owner("Palahniuk");
