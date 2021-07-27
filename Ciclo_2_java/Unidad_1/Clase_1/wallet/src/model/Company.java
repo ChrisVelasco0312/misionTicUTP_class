@@ -1,9 +1,9 @@
 package model;
 
-public class Owner extends User {
+public class Company extends User {
     private Wallet wallet;
 
-    public Owner(String name) {
+    public Company(String name) {
         super();
         wallet = new Wallet(false);
         setName(name);
