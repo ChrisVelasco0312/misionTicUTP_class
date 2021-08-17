@@ -1,0 +1,3 @@
+Realice un diagrama UML y su código en Java para 
+declrar una clase Persona con 3 subclases:
+    - Cliente-> arrendatario ó comprador ó Leasing
