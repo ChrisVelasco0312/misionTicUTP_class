@@ -109,4 +109,26 @@ public class Wallet {
         return false;
     }
 
+    public String breakLimit() {
+        if (!hasLimit) {
+            return "Error, your account does not have limits";
+        }
+        if (balance < 10000) {
+            return "Error, Break limit costs 1000, you have only " + balance;
+        }
+        balance -= 10000;
+        hasLimit = false;
+        return "Success! Your account now doesn't have limits, new balance: " + balance;
+    }
+
+    public String compareWallet(Wallet anotherWallet) {
+        if (balance > anotherWallet.getBalance()) {
+            return "You have more balance";
+        } else if (balance == anotherWallet.getBalance()) {
+            return "Both balances are equal.";
+        } else {
+            return "Your wallet has less balance!";
+        }
+    }
+
 }
